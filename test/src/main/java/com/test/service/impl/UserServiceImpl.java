@@ -11,7 +11,7 @@ import com.test.mapper.UserMapper;
 import com.test.service.UserService;
 
 
-@Service
+@Service  
 public class UserServiceImpl implements UserService{
 	//注入UserMapper
 		@Autowired
@@ -29,9 +29,9 @@ public class UserServiceImpl implements UserService{
 			return userMapper.insertUser(user);
 		}
 		
-		public User queryByUserId(Integer userId) {
+		public User queryByUsernameAndPassword(String username, String password) {
 			//调用usermapper中的根据用户id查询用户信息的方法queryByUserId
-			return userMapper.queryByUserId(userId);
+			return userMapper.queryByUsernameAndPassword(username, password);
 		}
 
 		public Integer updateUser(User user) {

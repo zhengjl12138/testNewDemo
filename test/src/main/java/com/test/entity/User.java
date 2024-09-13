@@ -1,66 +1,37 @@
 package com.test.entity;
 
-public class User {
+import java.io.Serializable;
 
-	private Integer id;
-	
-	private String username;
-	private String realname;
-	private String phone;
-	private String email;
-	private String grants;
-	private String remark;
-	
-	public Integer getId() {
-		return id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements Serializable{
+	public User(int i, String username2, String password2) {
+		// TODO 自动生成的构造函数存根
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getUserName() {
-		return username;
-	}
-	public void setUserName(String userName) {
-		this.username = userName;
-	}
-	public String getRealname() {
-		return realname;
-	}
-	public void setRealname(String realname) {
-		this.realname = realname;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getGrants() {
-		return grants;
-	}
-	public void setGrants(String grants) {
-		this.grants = grants;
-	}
-	public String getRemark() {
-		return remark;
-	}
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + username + ", realname=" + realname + ", phone="
-				+ phone + ", email=" + email + ", grants=" + grants + ", remark=" + remark +"]";
-	}
-	
-	
+	private static final long serialVersionUID = -8390887042859558153L;
+    private Integer id;
+    private String username;
+    private String password;
+    private String realname;
+    private String phone;
+    private String email;
+    private String grants;
+    private String remark;
+    private String create_time;
+    private String update_time;
+
+    
 }
 
 

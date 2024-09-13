@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>首页</title>
+        <script th:src="@{/js/jquery-3.7.1.min.js}" type="text/javascript"></script>
+    </head>
+    <body>
+        首页启动时请求后台的解析Jwt的的请求
+        <div id="sh"></div>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: "jwt/parseJwt",
+                    headers: {Authorization: localStorage.getItem("token")},
+                    success:function (res) {
+                        console.info(res);
+                        $("#sh").text(JSON.stringify(res));
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.test.entity.User;
 
 @Mapper
@@ -23,11 +25,12 @@ public interface UserMapper {
 	public Integer insertUser(User user);
 	
 	/**
-	 * 根据主键userId查询对象
-	 * @param userId 用户id
+	 * 根据主键username查询对象
+	 * @param username username
 	 * @return 用户信息
 	 */
-	public User queryByUserId(@Param("userId")Integer userId);
+	@Select("SELECT * FROM tuser WHERE username = #{username} and password = #{password}")
+	public User queryByUsernameAndPassword(@Param("username")String username, @Param("password") String password);
 	
 	/**
 	 * 修改用户信息

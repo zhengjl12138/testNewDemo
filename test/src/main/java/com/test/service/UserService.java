@@ -21,7 +21,7 @@ public interface UserService {
 	  * @param userId
 	  * @return 返回User实体信息
 	  */
-	public User queryByUserId(Integer userId);
+	public User queryByUsernameAndPassword(String username, String password);
 	
 	/**
 	 * 新增用户信息

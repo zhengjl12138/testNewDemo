@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>登录页面</title>
+        <script th:src="@{/js/jquery-3.7.1.min.js}" type="text/javascript"></script>
+    </head>
+    <body>
+        <form id="loginForm">
+            <input type="text" name="username" value="zhangsan"><br>
+            <input type="password" name="password" value="123456">
+        </form>
+        <button id="btn">登录</button>
+        <br>
+        <br>
+        <a href="/index">服务器解析JWT，网页显示</a>
+        <br>
+        <a href="/showJwt">显示网页端JWT</a>
+
+        <script>
+            $(function () {
+                $("#btn").click(function () {
+                    $.ajax({
+                        type: "POST",//请求方式
+                        url: "jwt/login",  //请求地址
+                        dataType: "JSON", //预期服务器端返回的数据的类型
+                        data: $("#loginForm").serialize(),//数据，json字符串
+                        success: function (result) { //请求成功
+                            console.log(result);
+                            if (result.code == 200) {
+                                //获取令牌并保存到本地
+                                localStorage.setItem("token", '{"token":"' + result.data + '"}');
+                            }
+                            if (result.code == 789) {
+                                window.location = "login";
+                            }
+                            console.info(result);
+                        },
+                        error: function (e) {  //请求失败，包含具体的错误信息
+                            console.log(e.status);
+                            console.log(e.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
